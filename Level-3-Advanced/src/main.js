@@ -4,31 +4,93 @@
 // }
 // forEach(['a','b','c'], callback); → prints a,0,['a','b','c'] b,1,['a','b','c'] c,2,['a','b','c']
 // For each element in the array, the callback we passed is called. The callback can be customized, but in the above example, the callback prints out the element, index, and entire array.
+
+
+// input : array and function 
+// output : array
+
 function forEach(array, callback) {
   // CODE HERE
+  // iterate over the array
+  // for each element in the array get the index
+  // return each value of the array, the index of the elem and the array itself
+  // let element 
+  // let index
+  
+  for (let i = 0; i < array.length; i++) {
+       callback(array[i],i,array)
+      }
+
 }
+
+
+// const callback = function(element, index, array) {
+//   console.log(element +"," +index +"," +array);
+// }
+
+
+// const arr = [1,2,3]
+
+// console.log(forEach(arr,callback))
+// console.log(forEach([1,2,3],callback))
+
+
+
+
 
 // Creates an array of values by running each element in collection through callback
 // Should we explain that map returns?
-// Callback (element/value, index/key, array)
-// map([1,2,3], function(element, index, array) {
-//  return element * 3;
-// }); -> [3,6,9]
+// Callback (element/value, index/key, array) {}
+
 // BONUS: use the forEach method you use to create map
+
+
+
+// input array, function 
+// output array 
 function map(array, callback) {
   // CODE HERE
+  let newArr = [];
+  for (let i=0; i < array.length; i++){
+    console.log(callback(array[i],i,array))
+    newArr.push( callback(array[i],i,array))
+  }
+ return newArr
 }
+
+
+
+
+
+console.log(map([1,2,3], function(element, index, array) {
+  return element * 3;
+ })); //-> [3,6,9]
 
 // Iterates over elements of collection, returning an Array of all elements callback returns truthy for.
 // filter([1,2,3,4], function(element, index, collection) {
 //  return element % 2 === 0;
-// }); → [2,4]
+// }); //→ [2,4]
 // filter({a: 1, b: 2,c: 3,d: 4}, function(element, index, collection) {
 //  return element % 2 !== 0;
 // }); → [1,3]
+
+// input array ,function
+// output array
+
 function filter(collection, callback) {
   // CODE HERE
+  let newArr2 = []
+  for(let i =0; i < collection.length; i++) {
+   if(callback(collection[i],i,collection) === true) {
+    newArr2.push(collection[i])
+   }
+     
+  }
+  return newArr2
 }
+console.log(filter([1,2,3,4], function(element, index, collection) {
+  return element % 2 === 0;
+ }));
 
 // Removes all elements from array that callback returns truthy for and returning a collection of elements that did not pass the truthy test.
 // The returned collection should be the same type that was passed in, either an Array or Object.
